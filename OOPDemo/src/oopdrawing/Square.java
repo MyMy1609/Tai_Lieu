@@ -1,25 +1,23 @@
 package oopdrawing;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 
 public class Square extends Shape {
-	private Point location;
 	private int sideWidth;
 
-	public Square(int sideWidth, Point center) {
+	public Square(Point center, int sideWidth) {
 		super("Square");
-		this.location = center;
+		this.center = center;
 		this.sideWidth = sideWidth;
 	}
-
-	public Point getLocation() {
-		return location;
+	
+	public Square(Point center, int sideWidth , Color color) {
+		super("Square");
+		this.center = center;
+		this.sideWidth = sideWidth;
+		this.setColor(color);
 	}
-
-	public void setLocation(Point center) {
-		this.location = center;
-	}
-
 	public int getSideWidth() {
 		return sideWidth;
 	}
@@ -41,8 +39,8 @@ public class Square extends Shape {
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(getColor());
-		int cornerX = location.x - (sideWidth / 2);
-		int cornerY = location.y - (sideWidth / 2);
+		int cornerX = center.x - (sideWidth / 2);
+		int cornerY = center.y - (sideWidth / 2);
 		g.drawRect(cornerX, cornerY, sideWidth, sideWidth);
 	}
 
